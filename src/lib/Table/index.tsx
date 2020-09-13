@@ -27,7 +27,7 @@ export interface TableProps {
   semantic?: boolean;
   children?: JSX.Element;
 }
-const Table: React.FC<TableProps> = ({
+export const Table: React.FC<TableProps> = ({
   data,
   columns,
   customLogic = false,
@@ -94,5 +94,3 @@ const Table: React.FC<TableProps> = ({
   //   </>
   // );
 };
-
-export default Table;
