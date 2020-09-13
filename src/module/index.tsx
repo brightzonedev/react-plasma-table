@@ -1,6 +1,7 @@
 import React from "react";
 // import "../../App.css";
-import Table from "../lib/Table";
+// import { Table } from "../lib/Table";
+import { Table, TableProps } from "../lib";
 
 const columns = [
   {
