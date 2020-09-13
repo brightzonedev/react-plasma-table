@@ -5,7 +5,7 @@ import React, { Fragment } from "react";
 import useSort from "../hooks/useSort";
 import RenderCustomComponents from "../RenderCustomComponents";
 
-type column = {
+type ColumnProps = {
   id: number;
   name: string | number;
   dataKey: string | number;
@@ -18,22 +18,16 @@ type sortConfig = {
   direction: string;
 } | null;
 
-interface Table {
+export interface TableProps {
   data: any;
-  columns: {
-    id: number;
-    name: string | number;
-    dataKey: string | number;
-    component?: (props: any) => JSX.Element;
-    sortable?: boolean;
-  }[];
+  columns: ColumnProps;
   customLogic?: boolean;
-  sort?: (columnName: string | number) => void;
-  sortConfig?: sortConfig;
+  // sort?: (columnName: string | number) => void;
+  // sortConfig?: sortConfig;
   semantic?: boolean;
   children?: JSX.Element;
 }
-const Table: React.FC<Table> = ({
+const Table: React.FC<TableProps> = ({
   data,
   columns,
   customLogic = false,
