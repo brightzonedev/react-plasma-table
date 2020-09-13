@@ -13,7 +13,6 @@ jobs:
         with:
           node-version: 12
           registry-url: https://registry.npmjs.org/
-      - run: npm i -g makeshift && makeshift -s @react-plasma-table -r registry.npmjs.org
       - run: yarn install
       - run: npm publish
         env:
