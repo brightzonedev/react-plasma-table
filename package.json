@@ -1,6 +1,6 @@
 {
   "name": "react-plasma-table",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "React Plasma Table",
   "main": "dist/index.tsx",
   "module": "dist/index.tsx",
@@ -15,8 +15,7 @@
       "stage-2"
     ]
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
@@ -29,7 +28,6 @@
     "@testing-library/user-event": "^7.1.2",
     "@types/jest": "^24.0.0",
     "@types/node": "^12.0.0",
- 
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
