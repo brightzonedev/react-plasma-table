@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./TableHead.css";
+// import "./TableHead.css";
 
 type Column = {
   id: number;
