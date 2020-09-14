@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
-// import Header from "../Header";
-// import Row from "../Row";
+import TableRow from "../TableRow";
+import TableHead from "../TableHead";
 import useSort from "../hooks/useSort";
 import RenderCustomComponents from "../RenderCustomComponents";
 
@@ -19,7 +19,7 @@ type sortConfig = {
 } | null;
 
 export interface TableProps {
-  data: any;
+  data: any[];
   columns: ColumnProps;
   customLogic?: boolean;
   // sort?: (columnName: string | number) => void;
@@ -48,9 +48,9 @@ export const Table: React.FC<TableProps> = ({
   if (semantic) {
     return (
       <table className="plasma-table" cellPadding={0} cellSpacing={0}>
-        <thead className="plasma-table-head">
+        <thead className="plasma-thead">
           {columns?.map((c) => (
-            <th className="plasma-head">
+            <th className="plasma-th">
               <button
                 className="plasma-sort-btn"
                 type="button"
@@ -63,15 +63,17 @@ export const Table: React.FC<TableProps> = ({
         </thead>
         <tbody className="plasma-body">
           {data?.map((row, index) => (
-            <tr className="plasma-row" key={index}>
+            <tr className="plasma-tr" key={index}>
               {columns?.map(({ id, dataKey, component }) => (
                 <Fragment key={id}>
                   {component && (
-                    <td className="plasma-cell">
+                    <td className="plasma-td">
                       {RenderCustomComponents(component, row[dataKey], row)}
                     </td>
                   )}
-                  {!component && row[dataKey] && <td>{row[dataKey]}</td>}
+                  {!component && row[dataKey] && (
+                    <td className="plasma-td">{row[dataKey]}</td>
+                  )}
                 </Fragment>
               ))}
             </tr>
@@ -85,12 +87,11 @@ export const Table: React.FC<TableProps> = ({
     return <>{children}</>;
   }
 
-  return null;
-  // return (
-  //   <>
-  //     <Header columns={columns} sort={sort} sortConfig={sortConfig} />
-  //     <Row data={sortedData} columns={columns} />
-  //     {children}
-  //   </>
-  // );
+  return (
+    <>
+      <TableHead columns={columns} sort={sort} sortConfig={sortConfig} />
+      <TableRow data={sortedData} columns={columns} />
+      {children}
+    </>
+  );
 };
