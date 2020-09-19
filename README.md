@@ -4,7 +4,7 @@
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]() [![](https://img.shields.io/npm/dt/react-plasma-table?style=for-the-badge)]()
 
-### React plasma table .
+### React plasma table 
 
 ```
 yarn add react-plasma-table
@@ -42,7 +42,7 @@ const columns = [
     name: "Birthday", // required
     dataKey: "birthday", // required
     sortable: true,
-    component: ({ birthday }) => (
+    component: ({ birthday, ...rest }) => (
       <>{format(new Date(invoiceDate), "dd.MM.yyyy")}</>
     ),
   },
@@ -52,22 +52,34 @@ const columns = [
 const sortUp = () => <SortUpIcon />; // Wrong way: const sortUp = <SortUpIcon />
 const sortDown = () => <SortUpIcon />;
 
+const onRowClick = (event, row, index) => {
+  /* === You'll have access to the event in case you need it
+         You'll have access to the entier row object
+         You'll have access to the index of the row starting with 0 === */
+  // You're row click handling logic here
+}
+
 const App = () => (
   <Table
     data={data}
     columns={columns}
     sortDownIcon={sortDown}
     sortUpIcon={sortUp}
+    onRowClick={(event, row, index) => onRowClick(event, row, index)}
   />
 );
 ```
 
 ## Documentation
 
-The documentation is a work in progress.
+The documentation is still a work in progress.
 
-- You are free to choose any sorts of sorting icons as long as you pass them down to Table in the form of a component.
-- You can pass down custom components to your table rows alongside other children
-- You can get all the individual keys as props in your custom component coming from your api.
+✅ Easy to understand API
+✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours
+✅ Perfect for small and large projects and 100% not an overkill!
 
-* Don't worry about the documentation. We're working on it! 😉
+💡 You are free to choose any sorting icons you wish, as long as you pass them down to Table in the form of a component.
+💡 You can pass down custom components to your table rows alongside other children
+💡 You can get all the individual keys as props in your custom component coming from your api.
+
+- Don't worry about the documentation. We're working on it! 😉

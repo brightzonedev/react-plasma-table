@@ -16,12 +16,14 @@ export interface TableProps {
   columns: ColumnProps;
   sortUpIcon?: (props: any) => JSX.Element;
   sortDownIcon?: (props: any) => JSX.Element;
+  onRowClick?: (event: React.MouseEvent, row: any, index: number) => any;
 }
 export const Table: React.FC<TableProps> = ({
   data,
   columns,
   sortUpIcon,
   sortDownIcon,
+  onRowClick,
 }) => {
   const { sortedData, sort, sortConfig } = useSort(data);
 
@@ -31,12 +33,18 @@ export const Table: React.FC<TableProps> = ({
     }
   };
 
+  const handleRowClick = (event: React.MouseEvent, row, index: number) => {
+    if (onRowClick) {
+      onRowClick(event, row, index);
+    }
+  };
+
   return (
     <table className="plasma-table" cellPadding={0} cellSpacing={0}>
       <thead className="plasma-thead">
         <tr className="plasma-header-tr">
           {columns?.map(({ id, name, dataKey, sortable, ...rest }) => (
-            <th className="plasma-th" key={id} {...rest}>
+            <th className="plasma-th" key={id}>
               <button
                 className="plasma-sort-btn"
                 type="button"
@@ -62,7 +70,11 @@ export const Table: React.FC<TableProps> = ({
       </thead>
       <tbody className="plasma-body">
         {sortedData?.map((row, index) => (
-          <tr className="plasma-tr" key={index}>
+          <tr
+            className="plasma-tr"
+            key={index}
+            onClick={(e) => handleRowClick(e, row, index)}
+          >
             {columns?.map(({ id, dataKey, component }) => (
               <Fragment key={id}>
                 {component && (
