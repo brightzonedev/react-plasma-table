@@ -13,14 +13,26 @@ type ColumnProps = {
 export interface TableRowProps {
   data: any[];
   columns: ColumnProps;
-  children?: JSX.Element;
+  // children?: JSX.Element;
+  onRowClick?: (event: React.MouseEvent, row: any, index: number) => any;
 }
 
-const TableRow = ({ data, columns }) => {
+export const TableRow = ({ data, columns, onRowClick }) => {
+  const handleRowClick = (event: React.MouseEvent, row, index: number) => {
+    if (onRowClick) {
+      onRowClick(event, row, index);
+    }
+  };
+
   return (
     <div className="plasma-rows-wrapper">
-      {data?.map((row) => (
-        <div className="plasma-row">
+      {data?.map((row, index) => (
+        <div
+          key={index}
+          className="plasma-row"
+          onClick={(e) => handleRowClick(e, row, index)}
+          style={{ display: "flex" }}
+        >
           {columns?.map(({ id, dataKey, component }) => (
             <Fragment key={id}>
               {component && (
@@ -38,5 +50,3 @@ const TableRow = ({ data, columns }) => {
     </div>
   );
 };
-
-export default TableRow;

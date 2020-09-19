@@ -6,7 +6,7 @@
 
 ### React plasma table
 
-- ✅ Easy to understand API
+- ✅ Simple and easy to understand API (Documentation work in progress)
 - ✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours
 - ✅ Perfect for small and large projects and 100% not an overkill!
 - ✅ Sortable out of the box
@@ -61,7 +61,7 @@ const onRowClick = (event, row, index) => {
   /* === You'll have access to the event in case you need it
          You'll have access to the entier row object
          You'll have access to the index of the row starting with 0 === */
-  // You're row click handling logic here
+  // Your row click handling logic here
 };
 
 const App = () => (
