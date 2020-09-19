@@ -4,7 +4,7 @@
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]() [![](https://img.shields.io/npm/dt/react-plasma-table?style=for-the-badge)]()
 
-### React plasma table 
+### React plasma table
 
 ```
 yarn add react-plasma-table
@@ -57,7 +57,7 @@ const onRowClick = (event, row, index) => {
          You'll have access to the entier row object
          You'll have access to the index of the row starting with 0 === */
   // You're row click handling logic here
-}
+};
 
 const App = () => (
   <Table
@@ -74,9 +74,9 @@ const App = () => (
 
 The documentation is still a work in progress.
 
-✅ Easy to understand API
-✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours
-✅ Perfect for small and large projects and 100% not an overkill!
+✅ Easy to understand API &nbsp;
+✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours &nbsp;
+✅ Perfect for small and large projects and 100% not an overkill! &nbsp;
 
 💡 You are free to choose any sorting icons you wish, as long as you pass them down to Table in the form of a component.
 💡 You can pass down custom components to your table rows alongside other children
