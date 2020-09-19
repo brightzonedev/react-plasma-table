@@ -42,7 +42,9 @@ const columns = [
     name: "Birthday", // required
     dataKey: "birthday", // required
     sortable: true,
-    component: ({ date }) => <>{format(new Date(invoiceDate), "dd.MM.yyyy")}</>,
+    component: ({ birthday }) => (
+      <>{format(new Date(invoiceDate), "dd.MM.yyyy")}</>
+    ),
   },
 ];
 
@@ -66,5 +68,6 @@ The documentation is a work in progress.
 
 - You are free to choose any sorts of sorting icons as long as you pass them down to Table in the form of a component.
 - You can pass down custom components to your table rows alongside other children
+- You can get all the individual keys as props in your custom component coming from your api.
 
 * Don't worry about the documentation. We're working on it! 😉

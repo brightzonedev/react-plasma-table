@@ -34,7 +34,7 @@ export const Table: React.FC<TableProps> = ({
   return (
     <table className="plasma-table" cellPadding={0} cellSpacing={0}>
       <thead className="plasma-thead">
-        <tr>
+        <tr className="plasma-header-tr">
           {columns?.map(({ id, name, dataKey, sortable, ...rest }) => (
             <th className="plasma-th" key={id} {...rest}>
               <button
