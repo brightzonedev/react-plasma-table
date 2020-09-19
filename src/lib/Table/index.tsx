@@ -21,17 +21,11 @@ type sortConfig = {
 export interface TableProps {
   data: any[];
   columns: ColumnProps;
-  customLogic?: boolean;
-  // sort?: (columnName: string | number) => void;
-  // sortConfig?: sortConfig;
-  semantic?: boolean;
   children?: JSX.Element;
 }
 export const Table: React.FC<TableProps> = ({
   data,
   columns,
-  customLogic = false,
-  semantic,
   children,
 }) => {
   const { sortedData, sort, sortConfig } = useSort(data);
@@ -67,7 +61,7 @@ export const Table: React.FC<TableProps> = ({
         ))}
       </thead>
       <tbody className="plasma-body">
-        {data?.map((row, index) => (
+        {sortedData?.map((row, index) => (
           <tr className="plasma-tr" key={index}>
             {columns?.map(({ id, dataKey, component }) => (
               <Fragment key={id}>
