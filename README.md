@@ -6,6 +6,11 @@
 
 ### React plasma table
 
+- ✅ Easy to understand API
+- ✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours
+- ✅ Perfect for small and large projects and 100% not an overkill!
+- ✅ Sortable out of the box
+
 ```
 yarn add react-plasma-table
 ```
@@ -73,10 +78,6 @@ const App = () => (
 ## Documentation
 
 The documentation is still a work in progress.
-
-✅ Easy to understand API  
-✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours  
-✅ Perfect for small and large projects and 100% not an overkill!  
 
 💡 You are free to choose any sorting icons you wish, as long as you pass them down to Table in the form of a component.
 💡 You can pass down custom components to your table rows alongside other children
