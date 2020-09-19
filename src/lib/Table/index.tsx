@@ -9,30 +9,21 @@ type ColumnProps = {
   dataKey: string | number;
   component?: (props: any) => JSX.Element;
   sortable?: boolean;
-  sortUpIcon?: (props: any) => JSX.Element;
-  sortDownIcon?: (props: any) => JSX.Element;
 }[];
-
-type sortConfig = {
-  key: string;
-  direction: string;
-} | null;
 
 export interface TableProps {
   data: any[];
   columns: ColumnProps;
+  sortUpIcon?: (props: any) => JSX.Element;
+  sortDownIcon?: (props: any) => JSX.Element;
 }
-export const Table: React.FC<TableProps> = ({ data, columns }) => {
+export const Table: React.FC<TableProps> = ({
+  data,
+  columns,
+  sortUpIcon,
+  sortDownIcon,
+}) => {
   const { sortedData, sort, sortConfig } = useSort(data);
-
-  console.log("sort sortConfig: ", sortConfig);
-  // const getClassNamesFor = (name) => {
-  //   if (!sortConfig) {
-  //     return;
-  //   }
-  //   // eslint-disable-next-line consistent-return
-  //   return sortConfig.key === name ? sortConfig.direction : undefined;
-  // };
 
   const onSort = (dataKey, isSortable) => {
     if (isSortable && sort) {
@@ -43,33 +34,23 @@ export const Table: React.FC<TableProps> = ({ data, columns }) => {
   return (
     <table className="plasma-table" cellPadding={0} cellSpacing={0}>
       <thead className="plasma-thead">
-        {columns?.map(
-          ({
-            id,
-            name,
-            dataKey,
-            sortable,
-            sortUpIcon,
-            sortDownIcon,
-            ...rest
-          }) => (
-            <th className="plasma-th" key={id} {...rest}>
-              <button
-                className="plasma-sort-btn"
-                type="button"
-                onClick={() => onSort(dataKey, sortable)}
-              >
-                {name}
-                {sortDownIcon &&
-                  sortConfig?.direction === "ascending" &&
-                  RenderCustomComponents(sortDownIcon)}
-                {sortUpIcon &&
-                  sortConfig?.direction === "descending" &&
-                  RenderCustomComponents(sortUpIcon)}
-              </button>
-            </th>
-          )
-        )}
+        {columns?.map(({ id, name, dataKey, sortable, ...rest }) => (
+          <th className="plasma-th" key={id} {...rest}>
+            <button
+              className="plasma-sort-btn"
+              type="button"
+              onClick={() => onSort(dataKey, sortable)}
+            >
+              {name}
+              {sortDownIcon &&
+                sortConfig?.direction === "ascending" &&
+                RenderCustomComponents(sortDownIcon)}
+              {sortUpIcon &&
+                sortConfig?.direction === "descending" &&
+                RenderCustomComponents(sortUpIcon)}
+            </button>
+          </th>
+        ))}
       </thead>
       <tbody className="plasma-body">
         {sortedData?.map((row, index) => (
@@ -91,16 +72,4 @@ export const Table: React.FC<TableProps> = ({ data, columns }) => {
       </tbody>
     </table>
   );
-
-  // if (customLogic) {
-  //   return <>{children}</>;
-  // }
-
-  // return (
-  //   <>
-  //     <TableHead columns={columns} sort={sort} sortConfig={sortConfig} />
-  //     <TableRow data={sortedData} columns={columns} />
-  //     {children}
-  //   </>
-  // );
 };
