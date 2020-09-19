@@ -74,9 +74,9 @@ const App = () => (
 
 The documentation is still a work in progress.
 
-✅ Easy to understand API &nbsp;
-✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours &nbsp;
-✅ Perfect for small and large projects and 100% not an overkill! &nbsp;
+✅ Easy to understand API  
+✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours  
+✅ Perfect for small and large projects and 100% not an overkill!  
 
 💡 You are free to choose any sorting icons you wish, as long as you pass them down to Table in the form of a component.
 💡 You can pass down custom components to your table rows alongside other children
