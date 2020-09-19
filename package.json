@@ -48,6 +48,15 @@
     "react-dom": "^16.x"
   },
   "repository": "https://github.com/theafn/react-plasma-table",
+  "keywords": [
+    "react",
+    "table component",
+    "react-component",
+    "plasma",
+    "react-plasma-table",
+    "react plasma table",
+    "react semantic table"
+  ],
   "scripts": {
     "start": "react-scripts start",
     "build": "rm -rf dist && mkdir dist && rollup -c",

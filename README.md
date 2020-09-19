@@ -12,7 +12,7 @@ yarn add react-plasma-table
 
 ### How to use
 
-Plasma UI has a peer dependency on emotion. Wrap your top level component with ThemeProvider from emotion-theming and pass down the theme from Plasma-ui so you can use our theme.
+This version only provides a semantic and dynamic table component.
 
 ```javascript
 import { Table } from "react-plasma-table";
