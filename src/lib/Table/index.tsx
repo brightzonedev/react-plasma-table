@@ -34,25 +34,31 @@ export const Table: React.FC<TableProps> = ({
   return (
     <table className="plasma-table" cellPadding={0} cellSpacing={0}>
       <thead className="plasma-thead">
-        {columns?.map(({ id, name, dataKey, sortable, ...rest }) => (
-          <th className="plasma-th" key={id} {...rest}>
-            <button
-              className="plasma-sort-btn"
-              type="button"
-              onClick={() => onSort(dataKey, sortable)}
-            >
-              {name}
-              {sortDownIcon &&
-                sortConfig?.direction === "ascending" &&
-                sortConfig?.key === dataKey &&
-                RenderCustomComponents(sortDownIcon)}
-              {sortUpIcon &&
-                sortConfig?.direction === "descending" &&
-                sortConfig?.key === dataKey &&
-                RenderCustomComponents(sortUpIcon)}
-            </button>
-          </th>
-        ))}
+        <tr>
+          {columns?.map(({ id, name, dataKey, sortable, ...rest }) => (
+            <th className="plasma-th" key={id} {...rest}>
+              <button
+                className="plasma-sort-btn"
+                type="button"
+                onClick={() => onSort(dataKey, sortable)}
+              >
+                {name}
+                <span className="plasma-sort-icon">
+                  {sortDownIcon &&
+                    sortConfig?.direction === "ascending" &&
+                    sortConfig?.key === dataKey &&
+                    RenderCustomComponents(sortDownIcon)}
+                </span>
+                <span className="plasma-sort-icon">
+                  {sortUpIcon &&
+                    sortConfig?.direction === "descending" &&
+                    sortConfig?.key === dataKey &&
+                    RenderCustomComponents(sortUpIcon)}
+                </span>
+              </button>
+            </th>
+          ))}
+        </tr>
       </thead>
       <tbody className="plasma-body">
         {sortedData?.map((row, index) => (
