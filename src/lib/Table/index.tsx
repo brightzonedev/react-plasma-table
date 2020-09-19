@@ -44,9 +44,11 @@ export const Table: React.FC<TableProps> = ({
               {name}
               {sortDownIcon &&
                 sortConfig?.direction === "ascending" &&
+                sortConfig?.key === dataKey &&
                 RenderCustomComponents(sortDownIcon)}
               {sortUpIcon &&
                 sortConfig?.direction === "descending" &&
+                sortConfig?.key === dataKey &&
                 RenderCustomComponents(sortUpIcon)}
             </button>
           </th>
