@@ -1,7 +1,5 @@
 import React, { Fragment } from "react";
 
-// import TableRow from "../TableRow";
-// import TableHead from "../TableHead";
 import useSort from "../hooks/useSort";
 import RenderCustomComponents from "../RenderCustomComponents";
 
@@ -11,6 +9,8 @@ type ColumnProps = {
   dataKey: string | number;
   component?: (props: any) => JSX.Element;
   sortable?: boolean;
+  sortUpIcon?: (props: any) => JSX.Element;
+  sortDownIcon?: (props: any) => JSX.Element;
 }[];
 
 type sortConfig = {
@@ -21,13 +21,8 @@ type sortConfig = {
 export interface TableProps {
   data: any[];
   columns: ColumnProps;
-  children?: JSX.Element;
 }
-export const Table: React.FC<TableProps> = ({
-  data,
-  columns,
-  children,
-}) => {
+export const Table: React.FC<TableProps> = ({ data, columns }) => {
   const { sortedData, sort, sortConfig } = useSort(data);
 
   console.log("sort sortConfig: ", sortConfig);
@@ -48,17 +43,33 @@ export const Table: React.FC<TableProps> = ({
   return (
     <table className="plasma-table" cellPadding={0} cellSpacing={0}>
       <thead className="plasma-thead">
-        {columns?.map(({ id, name, dataKey, sortable, ...rest }) => (
-          <th className="plasma-th" {...rest}>
-            <button
-              className="plasma-sort-btn"
-              type="button"
-              onClick={() => onSort(dataKey, sortable)}
-            >
-              {name}
-            </button>
-          </th>
-        ))}
+        {columns?.map(
+          ({
+            id,
+            name,
+            dataKey,
+            sortable,
+            sortUpIcon,
+            sortDownIcon,
+            ...rest
+          }) => (
+            <th className="plasma-th" {...rest}>
+              <button
+                className="plasma-sort-btn"
+                type="button"
+                onClick={() => onSort(dataKey, sortable)}
+              >
+                {name}
+                {sortDownIcon &&
+                  sortConfig?.direction === "ascending" &&
+                  sortDownIcon}
+                {sortUpIcon &&
+                  sortConfig?.direction === "descending" &&
+                  sortUpIcon}
+              </button>
+            </th>
+          )
+        )}
       </thead>
       <tbody className="plasma-body">
         {sortedData?.map((row, index) => (
