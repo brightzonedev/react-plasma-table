@@ -53,7 +53,7 @@ export const Table: React.FC<TableProps> = ({ data, columns }) => {
             sortDownIcon,
             ...rest
           }) => (
-            <th className="plasma-th" {...rest}>
+            <th className="plasma-th" key={id} {...rest}>
               <button
                 className="plasma-sort-btn"
                 type="button"
@@ -62,10 +62,10 @@ export const Table: React.FC<TableProps> = ({ data, columns }) => {
                 {name}
                 {sortDownIcon &&
                   sortConfig?.direction === "ascending" &&
-                  sortDownIcon}
+                  RenderCustomComponents(sortDownIcon)}
                 {sortUpIcon &&
                   sortConfig?.direction === "descending" &&
-                  sortUpIcon}
+                  RenderCustomComponents(sortUpIcon)}
               </button>
             </th>
           )
