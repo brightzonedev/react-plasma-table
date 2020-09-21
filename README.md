@@ -48,7 +48,7 @@ const columns = [
     dataKey: "birthday", // required
     sortable: true,
     component: ({ birthday, ...rest }) => (
-      <>{format(new Date(invoiceDate), "dd.MM.yyyy")}</>
+      <>{format(new Date(birthday), "dd.MM.yyyy")}</>
     ),
   },
 ];
