@@ -79,15 +79,15 @@ const App = () => (
 
 The documentation is still a work in progress.
 
-💡 You are free to choose any sorting icons you wish, as long as you pass them down to Table in the form of a component.
-💡 You can pass down custom components to your table rows alongside other children
-💡 You can get all the individual keys as props in your custom component coming from your api.
+- 💡 You are free to choose any sorting icons you wish, as long as you pass them down to Table in the form of a component.
+- 💡 You can pass down custom components to your table rows alongside other children
+- 💡 You can get all the individual keys as props in your custom component coming from your api.
 
 - Don't worry about the documentation. We're working on it! 😉
 
 ## Roadmap
 
-- Search  
-- Collapsable rows  
-- Selection  
+- Search
+- Collapsable rows
+- Selection
 - PDF, CSV and Excel exporting
