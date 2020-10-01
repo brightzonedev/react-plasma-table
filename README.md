@@ -6,8 +6,8 @@
 
 ### React plasma table
 
-- ✅ Simple and easy to understand API (Documentation work in progress)
-- ✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours
+- ✅ Simple and intuitive API (Documentation work in progress)
+- ✅ Semantically opinionated rendered tables vs modern customizeable tables (Not available yet) - the choice is yours
 - ✅ Perfect for small and large projects and 100% not an overkill!
 - ✅ Sortable out of the box
 
@@ -84,3 +84,10 @@ The documentation is still a work in progress.
 💡 You can get all the individual keys as props in your custom component coming from your api.
 
 - Don't worry about the documentation. We're working on it! 😉
+
+## Roadmap
+
+- Search  
+- Collapsable rows  
+- Selection  
+- PDF, CSV and Excel exporting
