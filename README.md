@@ -2,7 +2,7 @@
 <p align='center'>React Plasma Table</p>
 <p>&nbsp;</p>
 
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)]() [![](https://img.shields.io/npm/dt/react-plasma-table?style=for-the-badge)]()
+[![](https://img.shields.io/npm/dt/react-plasma-table?style=for-the-badge)]()
 
 ### React plasma table
 
