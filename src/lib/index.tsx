@@ -4,5 +4,6 @@
 
 export * from "./Table";
 export * from "./hooks/useSort";
+export * from "./hooks/usePaginate";
 export * from "./TableRow";
 // export { Table, TableProps, useSort };

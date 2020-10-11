@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
 import RenderCustomComponents from "../RenderCustomComponents";
+import "./TableRow.css";
 
 type ColumnProps = {
   id: number;
@@ -31,7 +32,6 @@ export const TableRow = ({ data, columns, onRowClick }) => {
           key={index}
           className="plasma-row"
           onClick={(e) => handleRowClick(e, row, index)}
-          style={{ display: "flex" }}
         >
           {columns?.map(({ id, dataKey, component }) => (
             <Fragment key={id}>

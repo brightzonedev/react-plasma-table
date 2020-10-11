@@ -11,6 +11,7 @@
 - ✅ Perfect for small and large projects and 100% not an overkill!
 - ✅ Sortable out of the box
 - ✅ Searchable (✨ New! ✨)
+- ✅ Now with pagination (✨ New! ✨)
 
 ```
 yarn add react-plasma-table
@@ -22,7 +23,7 @@ This version only provides a semantic and dynamic table component.
 
 ```javascript
 import React, { useState } from "react";
-import { Table } from "react-plasma-table";
+import { Table, usePaginate } from "react-plasma-table";
 import { format } from "../my-date-formatting-function";
 
 // Define you logic here
@@ -71,11 +72,20 @@ const onRowClick = (event, row, index) => {
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const {
+    goNext, // function()
+    goPrev, // function()
+    goToPage, // function(page number)
+    currentData,
+    currentPage,
+    lastPage,
+  } = usePaginate(data, 5);
   return (
     <>
       <input type="text" onChange={(e) => setSearchQuery(e.target.value)} />
       <Table
         data={data}
+        // When using pagination then pass data={currentData}
         columns={columns}
         sortDownIcon={sortDown}
         sortUpIcon={sortUp}
@@ -87,10 +97,20 @@ const App = () => {
 };
 ```
 
-## Documentation
+## API
 
 The documentation is still a work in progress.
 
+### `Table`:
+
+#### props
+
+- `data` (required): `array of objects`
+- `columns` (required): `array of objects` => `{ id: number (required) name: string or number (required) - what you see in the table head dataKey: string or number (required) - the key of the data object to connet to component: JSX element (optional) sortable: boolean (optional) searchable: boolean (optional) }`
+- `sortUpIcon` (optional): `JSX element`
+- `sortDownIcon` (optional): `JSX element`
+- `searchQuery` (optional): `string or undefined`
+- `onRowClick`(optional): `function(event, row, index)`
 - 💡 You are free to choose any sorting icons you wish, as long as you pass them down to Table in the form of a component.
 - 💡 You can pass down custom components to your table rows alongside other children
 - 💡 You can get all the individual keys as props in your custom component coming from your api.
@@ -98,10 +118,15 @@ The documentation is still a work in progress.
 ## Roadmap
 
 - Search (done)
-- Pagination
+- Pagination (done)
 - Collapsable rows
 - Selection
 - PDF, CSV and Excel exporting
+- Examples
+
+### Version 1.0.0
+
+We have included a custom pagination hook that allows you to add it to your own or any third party pagination logic, that can be placed anywhere on the page as it won't be bound to the Table component.
 
 ### Version 0.8.0
 
