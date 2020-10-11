@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useSearch = (
+export const useSearch = (
   rows: any,
   searchQuery: string | undefined,
   searchColumns: any
@@ -19,5 +19,3 @@ const useSearch = (
 
   return { filteredData };
 };
-
-export default useSearch;

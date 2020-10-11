@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const usePaginate = (data: any, perPage: number) => {
+export const usePaginate = (data: any, perPage: number) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentData, setCurrentData] = useState<any[]>([]);
   const lastPage = Math.ceil(data?.length / perPage);
@@ -26,5 +26,3 @@ const usePaginate = (data: any, perPage: number) => {
 
   return { goNext, goPrev, goToPage, currentData, currentPage, lastPage };
 };
-
-export default usePaginate;

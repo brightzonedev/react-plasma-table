@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
-import useSort from "../hooks/useSort";
-import useSearch from "../hooks/useSearch";
+import { useSort } from "../hooks/useSort";
+import { useSearch } from "../hooks/useSearch";
 import RenderCustomComponents from "../RenderCustomComponents";
 
 type ColumnProps = {

@@ -5,7 +5,7 @@ type sortConfig = {
   direction: string;
 } | null;
 
-const useSort = (sortedData, config = null) => {
+export const useSort = (sortedData, config = null) => {
   const [sortConfig, setSortConfig] = useState<sortConfig>(config);
 
   const sortedItems = useMemo(() => {
@@ -38,5 +38,3 @@ const useSort = (sortedData, config = null) => {
 
   return { sortedData: sortedItems, sort, sortConfig };
 };
-
-export default useSort;
