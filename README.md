@@ -8,7 +8,7 @@
 
 - ✅ Simple and intuitive API
 - ✅ Semantically opinionated rendered tables vs modern customizeable tables (Not available yet) - the choice is yours
-- ✅ Perfect for small and large projects and 100% not an overkill!
+- ✅ Perfect for small and large projects
 - ✅ Sortable out of the box
 - ✅ Searchable (✨ New! ✨)
 - ✅ Now with pagination (✨ New! ✨)
@@ -111,7 +111,7 @@ The documentation is still a work in progress.
 - `sortDownIcon` (optional): `JSX element`
 - `searchQuery` (optional): `string or undefined`
 - `onRowClick`(optional): `function(event, row, index)`
-- 💡 You are free to choose any sorting icons you wish, as long as you pass them down to Table in the form of a component.
+
 - 💡 You can pass down custom components to your table rows alongside other children
 - 💡 You can get all the individual keys as props in your custom component coming from your api.
 
