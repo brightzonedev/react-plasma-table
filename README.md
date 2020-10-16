@@ -6,9 +6,10 @@
 
 ### React plasma table
 
-- ✅ Simple and intuitive API
+- ✅ Super simple and intuitive API
 - ✅ Semantically opinionated rendered tables vs modern customizeable tables (Not available yet) - the choice is yours
 - ✅ Perfect for small and large projects
+- ✅ Written in Typescript
 - ✅ Sortable out of the box
 - ✅ Searchable (✨ New! ✨)
 - ✅ Now with pagination (✨ New! ✨)
@@ -96,6 +97,10 @@ const App = () => {
   );
 };
 ```
+
+## Examples
+
+- [Bare bones example with no styling](https://codesandbox.io/s/fervent-easley-z1jei)
 
 ## API
 
