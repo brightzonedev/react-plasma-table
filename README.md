@@ -7,7 +7,7 @@
 ### React plasma table
 
 - ✅ Super simple and intuitive API
-- ✅ Semantically opinionated rendered tables vs modern customizeable tables (Not available yet) - the choice is yours
+- ✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours
 - ✅ Perfect for small and large projects
 - ✅ Written in Typescript
 - ✅ Sortable out of the box
@@ -100,7 +100,7 @@ const App = () => {
 
 ## Examples
 
-- [Bare bones example with no styling](https://codesandbox.io/s/fervent-easley-z1jei)
+- [Table bare bones example with no styling](https://codesandbox.io/s/fervent-easley-z1jei)
 
 ## API
 
@@ -128,6 +128,10 @@ The documentation is still a work in progress.
 - Selection
 - PDF, CSV and Excel exporting
 - Examples
+
+### Version 1.1.0
+
+In this version we have added a new Row component to create dynamic, modern table and data grids.
 
 ### Version 1.0.0
 
