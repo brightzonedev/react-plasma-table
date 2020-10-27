@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const useSearch = (
-  rows: any,
-  searchQuery: string | undefined,
-  searchColumns: any
-) => {
+export const useSearch = (rows: any, searchQuery = "", searchColumns: any) => {
   const [filteredData, setfilteredData] = useState<any>();
 
   useEffect(() => {
