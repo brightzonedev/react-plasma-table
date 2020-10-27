@@ -13,7 +13,7 @@ export type ColumnProps = {
   searchable?: boolean;
 };
 
-export interface TableRowProps {
+export interface RowProps {
   data: any[];
   columns: ColumnProps[];
   // children?: JSX.Element;
@@ -21,7 +21,12 @@ export interface TableRowProps {
   onRowClick?: (event: React.MouseEvent, row: any, index: number) => any;
 }
 
-export const Row = ({ data, columns, searchQuery, onRowClick }) => {
+export const Row: React.FC<RowProps> = ({
+  data,
+  columns,
+  searchQuery,
+  onRowClick,
+}) => {
   const searchColumns = columns
     ?.filter((i: ColumnProps) => i?.searchable)
     .map((i: ColumnProps) => i?.searchable && i?.dataKey);
