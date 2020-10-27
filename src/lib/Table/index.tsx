@@ -38,7 +38,7 @@ export const Table: React.FC<TableProps> = ({
     searchQuery ? filteredData : data
   );
 
-  const onSort = (dataKey, isSortable) => {
+  const onSort = (dataKey: string | number, isSortable) => {
     if (isSortable && sort) {
       sort(dataKey);
     }

@@ -1,17 +1,17 @@
 import React from "react";
 
-// import "./TableHead.css";
+import "./Head.css";
 
-type Column = {
+export type ColumnProps = {
   id: number;
   name: string | number;
   dataKey: string | number;
   component?: (props: any) => JSX.Element;
   sortable?: boolean;
-}[];
+};
 
 interface InvoiceHeader {
-  columns: Column;
+  columns: ColumnProps[];
   sort?: (columnName: string | number) => void;
   sortConfig?: {
     key: string | number;
@@ -24,7 +24,7 @@ const InvoiceHeader: React.FC<InvoiceHeader> = ({
   sort,
   sortConfig,
 }) => {
-  const onSort = (dataKey, isSortable) => {
+  const onSort = (dataKey: string | number, isSortable) => {
     if (isSortable && sort) {
       sort(dataKey);
     }
