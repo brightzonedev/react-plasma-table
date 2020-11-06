@@ -101,6 +101,7 @@ const App = () => {
 ## Examples
 
 - [Table bare bones example with no styling](https://codesandbox.io/s/fervent-easley-z1jei)
+- [Pagination example](https://codesandbox.io/s/thirsty-edison-sz5bd)
 
 ## API
 
@@ -128,15 +129,3 @@ The documentation is still a work in progress.
 - Selection
 - PDF, CSV and Excel exporting
 - Examples
-
-### Version 1.1.0
-
-In this version we have added a new Row component to create dynamic, modern table and data grids.
-
-### Version 1.0.0
-
-We have included a custom pagination hook that allows you to add it to your own or any third party pagination logic, that can be placed anywhere on the page as it won't be bound to the Table component.
-
-### Version 0.8.0
-
-This version adds a global filtering feature to easily search for any data from any column you define yourself to be searchable.
