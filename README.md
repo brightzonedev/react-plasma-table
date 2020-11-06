@@ -24,7 +24,7 @@ This version only provides a semantic and dynamic table component.
 
 ```javascript
 import React, { useState } from "react";
-import { Table, usePaginate } from "react-plasma-table";
+import { Table } from "react-plasma-table";
 import { format } from "../my-date-formatting-function";
 
 // Define you logic here
@@ -73,20 +73,12 @@ const onRowClick = (event, row, index) => {
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const {
-    goNext, // function()
-    goPrev, // function()
-    goToPage, // function(page number)
-    currentData,
-    currentPage,
-    lastPage,
-  } = usePaginate(data, 5);
+
   return (
     <>
       <input type="text" onChange={(e) => setSearchQuery(e.target.value)} />
       <Table
         data={data}
-        // When using pagination then pass data={currentData}
         columns={columns}
         sortDownIcon={sortDown}
         sortUpIcon={sortUp}
