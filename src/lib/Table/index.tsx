@@ -22,7 +22,7 @@ export interface TableProps {
   onRowClick?: (event: React.MouseEvent, row: any, index: number) => any;
 }
 export const Table: React.FC<TableProps> = ({
-  data,
+  data = [],
   columns,
   sortUpIcon,
   sortDownIcon,
@@ -32,10 +32,10 @@ export const Table: React.FC<TableProps> = ({
   const searchColumns = columns
     ?.filter((i) => i?.searchable)
     .map((i) => i?.searchable && i?.dataKey);
-  const { filteredData } = useSearch(data || [], searchQuery, searchColumns);
+  const { filteredData } = useSearch(data, searchQuery, searchColumns);
 
   const { sortedData, sort, sortConfig } = useSort(
-    searchQuery ? filteredData : data || []
+    searchQuery ? filteredData : data
   );
 
   const onSort = (dataKey: string | number, isSortable) => {
