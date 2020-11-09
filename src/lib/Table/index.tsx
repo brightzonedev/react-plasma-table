@@ -35,7 +35,7 @@ export const Table: React.FC<TableProps> = ({
   const { filteredData } = useSearch(data, searchQuery, searchColumns);
 
   const { sortedData, sort, sortConfig } = useSort(
-    searchQuery ? filteredData : data
+    searchQuery ? filteredData : data || []
   );
 
   const onSort = (dataKey: string | number, isSortable) => {
