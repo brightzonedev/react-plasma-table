@@ -32,7 +32,7 @@ export const Table: React.FC<TableProps> = ({
   const searchColumns = columns
     ?.filter((i) => i?.searchable)
     .map((i) => i?.searchable && i?.dataKey);
-  const { filteredData } = useSearch(data, searchQuery, searchColumns);
+  const { filteredData } = useSearch(data || [], searchQuery, searchColumns);
 
   const { sortedData, sort, sortConfig } = useSort(
     searchQuery ? filteredData : data || []
