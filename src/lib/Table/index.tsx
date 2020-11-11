@@ -96,6 +96,7 @@ export const Table: React.FC<TableProps> = ({
                 {!component && row[dataKey] && (
                   <td className="plasma-td">{row[dataKey]}</td>
                 )}
+                {!component && !row[dataKey] && <td className="plasma-td"></td>}
               </Fragment>
             ))}
           </tr>
