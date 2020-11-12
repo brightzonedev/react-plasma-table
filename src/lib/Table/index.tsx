@@ -16,11 +16,7 @@ type ColumnProps = {
   component?: (props: any) => JSX.Element;
   sortable?: boolean;
   searchable?: boolean;
-  subRows?: {
-    id: number | string;
-    dataKey: string | number;
-    component?: (props: any) => JSX.Element;
-  }[];
+  subRowComponent?: (props: any) => JSX.Element;
 }[];
 
 export interface TableProps {
@@ -126,21 +122,21 @@ export const Table: React.FC<TableProps> = ({
             {expandedRows?.find((i: Row) => i === row) &&
               row?.subRows?.map((subRow, index) => (
                 <tr className="plasma-tr plasma-sub-tr" key={index}>
-                  {columns?.map(({ id, dataKey, component }) => (
+                  {columns?.map(({ id, dataKey, subRowComponent }) => (
                     <Fragment key={id}>
-                      {component && (
+                      {subRowComponent && (
                         <td className="plasma-td">
                           {RenderCustomComponents(
-                            component,
+                            subRowComponent,
                             subRow[dataKey],
                             subRow
                           )}
                         </td>
                       )}
-                      {!component && subRow[dataKey] && (
+                      {!subRowComponent && subRow[dataKey] && (
                         <td className="plasma-td">{subRow[dataKey]}</td>
                       )}
-                      {!component && !subRow[dataKey] && (
+                      {!subRowComponent && !subRow[dataKey] && (
                         <td className="plasma-td"></td>
                       )}
                     </Fragment>
