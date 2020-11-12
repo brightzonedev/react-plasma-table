@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useState } from "react";
 
 import { useSort } from "../hooks/useSort";
 import { useSearch } from "../hooks/useSearch";
@@ -13,13 +13,13 @@ type ColumnProps = {
   id: number | string;
   name: string | number;
   dataKey: string | number;
-  Component?: (props: any) => JSX.Element;
+  component?: (props: any) => JSX.Element;
   sortable?: boolean;
   searchable?: boolean;
   subRows?: {
     id: number | string;
     dataKey: string | number;
-    Component?: (props: any) => JSX.Element;
+    component?: (props: any) => JSX.Element;
   }[];
 }[];
 
@@ -39,6 +39,7 @@ export const Table: React.FC<TableProps> = ({
   searchQuery,
   onRowClick,
 }) => {
+  const [expandedRows, setExpandedRows] = useState<Row[]>([]);
   const searchColumns = columns
     ?.filter((i) => i?.searchable)
     .map((i) => i?.searchable && i?.dataKey);
@@ -57,6 +58,15 @@ export const Table: React.FC<TableProps> = ({
   const handleRowClick = (event: React.MouseEvent, row: Row, index: number) => {
     if (onRowClick) {
       onRowClick(event, row, index);
+    }
+    const isRowExpanded = expandedRows.find((i: Row) => i === row);
+    if (isRowExpanded) {
+      setExpandedRows((prevRows: Row[]) =>
+        prevRows.filter((i: Row) => i !== row)
+      );
+    }
+    if (!isRowExpanded) {
+      setExpandedRows((prevRows: Row[]) => [...prevRows, row]);
     }
   };
 
@@ -97,45 +107,46 @@ export const Table: React.FC<TableProps> = ({
               key={index}
               onClick={(e) => handleRowClick(e, row, index)}
             >
-              {columns?.map(({ id, dataKey, Component }) => (
+              {columns?.map(({ id, dataKey, component }) => (
                 <Fragment key={id}>
-                  {Component && (
+                  {component && (
                     <td className="plasma-td">
-                      {RenderCustomComponents(Component, row[dataKey], row)}
+                      {RenderCustomComponents(component, row[dataKey], row)}
                     </td>
                   )}
-                  {!Component && row[dataKey] && (
+                  {!component && row[dataKey] && (
                     <td className="plasma-td">{row[dataKey]}</td>
                   )}
-                  {!Component && !row[dataKey] && (
+                  {!component && !row[dataKey] && (
                     <td className="plasma-td"></td>
                   )}
                 </Fragment>
               ))}
             </tr>
-            {row?.subRows?.map((subRow, index) => (
-              <tr className="plasma-tr plasma-sub-tr" key={index}>
-                {columns?.map(({ id, dataKey, Component }) => (
-                  <Fragment key={id}>
-                    {Component && (
-                      <td className="plasma-td">
-                        {RenderCustomComponents(
-                          Component,
-                          subRow[dataKey],
-                          subRow
-                        )}
-                      </td>
-                    )}
-                    {!Component && subRow[dataKey] && (
-                      <td className="plasma-td">{subRow[dataKey]}</td>
-                    )}
-                    {!Component && !subRow[dataKey] && (
-                      <td className="plasma-td"></td>
-                    )}
-                  </Fragment>
-                ))}
-              </tr>
-            ))}
+            {expandedRows?.find((i: Row) => i === row) &&
+              row?.subRows?.map((subRow, index) => (
+                <tr className="plasma-tr plasma-sub-tr" key={index}>
+                  {columns?.map(({ id, dataKey, component }) => (
+                    <Fragment key={id}>
+                      {component && (
+                        <td className="plasma-td">
+                          {RenderCustomComponents(
+                            component,
+                            subRow[dataKey],
+                            subRow
+                          )}
+                        </td>
+                      )}
+                      {!component && subRow[dataKey] && (
+                        <td className="plasma-td">{subRow[dataKey]}</td>
+                      )}
+                      {!component && !subRow[dataKey] && (
+                        <td className="plasma-td"></td>
+                      )}
+                    </Fragment>
+                  ))}
+                </tr>
+              ))}
           </>
         ))}
       </tbody>
