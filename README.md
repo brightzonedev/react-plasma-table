@@ -67,7 +67,7 @@ const sortDown = () => <SortUpIcon />;
 
 const onRowClick = (event, row, index) => {
   /* === You'll have access to the event in case you need it
-         You'll have access to the entier row object
+         You'll have access to the entire row object
          You'll have access to the index of the row starting with 0 === */
   // Your row click handling logic here
 };
