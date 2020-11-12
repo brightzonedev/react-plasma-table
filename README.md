@@ -13,6 +13,7 @@
 - ✅ Sortable out of the box
 - ✅ Searchable (✨ New! ✨)
 - ✅ Now with pagination (✨ New! ✨)
+- ✅ Collapsable (✨ New! - In development ✨)
 
 ```
 yarn add react-plasma-table
@@ -117,7 +118,7 @@ The documentation is still a work in progress.
 
 - Search (done)
 - Pagination (done)
-- Collapsable rows
+- Collapsable rows (In development)
 - Selection
 - PDF, CSV and Excel exporting
 - Examples

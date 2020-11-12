@@ -4,13 +4,23 @@ import { useSort } from "../hooks/useSort";
 import { useSearch } from "../hooks/useSearch";
 import RenderCustomComponents from "../RenderCustomComponents";
 
+type Row = {
+  [key: string]: any;
+  subRows?: any[];
+};
+
 type ColumnProps = {
-  id: number;
+  id: number | string;
   name: string | number;
   dataKey: string | number;
-  component?: (props: any) => JSX.Element;
+  Component?: (props: any) => JSX.Element;
   sortable?: boolean;
   searchable?: boolean;
+  subRows: {
+    id: number | string;
+    dataKey: string | number;
+    Component?: (props: any) => JSX.Element;
+  }[];
 }[];
 
 export interface TableProps {
@@ -44,7 +54,7 @@ export const Table: React.FC<TableProps> = ({
     }
   };
 
-  const handleRowClick = (event: React.MouseEvent, row, index: number) => {
+  const handleRowClick = (event: React.MouseEvent, row: Row, index: number) => {
     if (onRowClick) {
       onRowClick(event, row, index);
     }
@@ -80,26 +90,53 @@ export const Table: React.FC<TableProps> = ({
         </tr>
       </thead>
       <tbody className="plasma-body">
-        {sortedData?.map((row, index) => (
-          <tr
-            className="plasma-tr"
-            key={index}
-            onClick={(e) => handleRowClick(e, row, index)}
-          >
-            {columns?.map(({ id, dataKey, component }) => (
-              <Fragment key={id}>
-                {component && (
-                  <td className="plasma-td">
-                    {RenderCustomComponents(component, row[dataKey], row)}
-                  </td>
-                )}
-                {!component && row[dataKey] && (
-                  <td className="plasma-td">{row[dataKey]}</td>
-                )}
-                {!component && !row[dataKey] && <td className="plasma-td"></td>}
-              </Fragment>
+        {sortedData?.map((row: Row, index) => (
+          <>
+            <tr
+              className="plasma-tr"
+              key={index}
+              onClick={(e) => handleRowClick(e, row, index)}
+            >
+              {columns?.map(({ id, dataKey, Component }) => (
+                <Fragment key={id}>
+                  {Component && (
+                    <td className="plasma-td">
+                      {RenderCustomComponents(Component, row[dataKey], row)}
+                    </td>
+                  )}
+                  {!Component && row[dataKey] && (
+                    <td className="plasma-td">{row[dataKey]}</td>
+                  )}
+                  {!Component && !row[dataKey] && (
+                    <td className="plasma-td"></td>
+                  )}
+                </Fragment>
+              ))}
+            </tr>
+            {row?.subRows?.map((subRow, index) => (
+              <tr className="plasma-tr plasma-sub-tr" key={index}>
+                {columns?.map(({ id, dataKey, Component }) => (
+                  <Fragment key={id}>
+                    {Component && (
+                      <td className="plasma-td">
+                        {RenderCustomComponents(
+                          Component,
+                          subRow[dataKey],
+                          subRow
+                        )}
+                      </td>
+                    )}
+                    {!Component && subRow[dataKey] && (
+                      <td className="plasma-td">{subRow[dataKey]}</td>
+                    )}
+                    {!Component && !subRow[dataKey] && (
+                      <td className="plasma-td"></td>
+                    )}
+                  </Fragment>
+                ))}
+              </tr>
             ))}
-          </tr>
+          </>
         ))}
       </tbody>
     </table>
