@@ -16,7 +16,7 @@ type ColumnProps = {
   Component?: (props: any) => JSX.Element;
   sortable?: boolean;
   searchable?: boolean;
-  subRows: {
+  subRows?: {
     id: number | string;
     dataKey: string | number;
     Component?: (props: any) => JSX.Element;
