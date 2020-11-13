@@ -74,7 +74,7 @@ export const Table: React.FC<TableProps> = ({
     <table className="plasma-table" cellPadding={0} cellSpacing={0}>
       <thead className="plasma-thead">
         <tr className="plasma-header-tr">
-          {columns?.map(({ id, name, dataKey, sortable, ...rest }) => (
+          {columns?.map(({ id, name, dataKey, sortable }) => (
             <th className="plasma-th" key={id}>
               <button
                 className="plasma-sort-btn"
@@ -103,7 +103,11 @@ export const Table: React.FC<TableProps> = ({
         {sortedData?.map((row: RowTypes, index) => (
           <>
             <tr
-              className="plasma-tr"
+              className={
+                expandedRows?.find((i: RowTypes) => i === row)
+                  ? "plasma-tr plasma-tr-open"
+                  : "plasma-tr"
+              }
               key={index}
               onClick={(e) => handleRowClick(e, row, index)}
             >
