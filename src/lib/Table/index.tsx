@@ -133,7 +133,7 @@ export const Table: React.FC<TableProps> = ({
                   {columns?.map(({ id, dataKey, subRowComponent }) => (
                     <Fragment key={id}>
                       {subRowComponent && (
-                        <td className="plasma-td">
+                        <td className="plasma-td plasma-sub-td">
                           {RenderCustomComponents(
                             subRowComponent,
                             subRow[dataKey],
@@ -142,10 +142,12 @@ export const Table: React.FC<TableProps> = ({
                         </td>
                       )}
                       {!subRowComponent && subRow[dataKey] && (
-                        <td className="plasma-td">{subRow[dataKey]}</td>
+                        <td className="plasma-td plasma-sub-td">
+                          {subRow[dataKey]}
+                        </td>
                       )}
                       {!subRowComponent && !subRow[dataKey] && (
-                        <td className="plasma-td"></td>
+                        <td className="plasma-td plasma-sub-td"></td>
                       )}
                     </Fragment>
                   ))}
