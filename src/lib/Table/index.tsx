@@ -4,7 +4,7 @@ import { useSort } from "../hooks/useSort";
 import { useSearch } from "../hooks/useSearch";
 import RenderCustomComponents from "../RenderCustomComponents";
 
-export type Row = {
+export type RowTypes = {
   [key: string]: any;
   subRows?: any[];
 };
@@ -35,7 +35,7 @@ export const Table: React.FC<TableProps> = ({
   searchQuery,
   onRowClick,
 }) => {
-  const [expandedRows, setExpandedRows] = useState<Row[]>([]);
+  const [expandedRows, setExpandedRows] = useState<RowTypes[]>([]);
   const searchColumns = columns
     ?.filter((i) => i?.searchable)
     .map((i) => i?.searchable && i?.dataKey);
@@ -51,18 +51,22 @@ export const Table: React.FC<TableProps> = ({
     }
   };
 
-  const handleRowClick = (event: React.MouseEvent, row: Row, index: number) => {
+  const handleRowClick = (
+    event: React.MouseEvent,
+    row: RowTypes,
+    index: number
+  ) => {
     if (onRowClick) {
       onRowClick(event, row, index);
     }
-    const isRowExpanded = expandedRows.find((i: Row) => i === row);
+    const isRowExpanded = expandedRows.find((i: RowTypes) => i === row);
     if (isRowExpanded) {
-      setExpandedRows((prevRows: Row[]) =>
-        prevRows.filter((i: Row) => i !== row)
+      setExpandedRows((prevRows: RowTypes[]) =>
+        prevRows.filter((i: RowTypes) => i !== row)
       );
     }
     if (!isRowExpanded) {
-      setExpandedRows((prevRows: Row[]) => [...prevRows, row]);
+      setExpandedRows((prevRows: RowTypes[]) => [...prevRows, row]);
     }
   };
 
@@ -96,7 +100,7 @@ export const Table: React.FC<TableProps> = ({
         </tr>
       </thead>
       <tbody className="plasma-body">
-        {sortedData?.map((row: Row, index) => (
+        {sortedData?.map((row: RowTypes, index) => (
           <>
             <tr
               className="plasma-tr"
@@ -119,7 +123,7 @@ export const Table: React.FC<TableProps> = ({
                 </Fragment>
               ))}
             </tr>
-            {expandedRows?.find((i: Row) => i === row) &&
+            {expandedRows?.find((i: RowTypes) => i === row) &&
               row?.subRows?.map((subRow, index) => (
                 <tr className="plasma-tr plasma-sub-tr" key={index}>
                   {columns?.map(({ id, dataKey, subRowComponent }) => (
