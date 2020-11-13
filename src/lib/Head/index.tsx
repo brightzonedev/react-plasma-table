@@ -1,7 +1,15 @@
 import React from "react";
 
 import "./Head.css";
-import { ColumnProps } from "../Row";
+
+type ColumnProps = {
+  id: number;
+  name: string | number;
+  dataKey: string | number;
+  component?: (props: any) => JSX.Element;
+  sortable?: boolean;
+  searchable?: boolean;
+};
 
 interface InvoiceHeader {
   columns: ColumnProps[];

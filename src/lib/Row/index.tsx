@@ -4,7 +4,7 @@ import { useSearch } from "../hooks/useSearch";
 import RenderCustomComponents from "../RenderCustomComponents";
 import "./Row.css";
 
-export type ColumnProps = {
+type ColumnProps = {
   id: number;
   name: string | number;
   dataKey: string | number;
@@ -13,7 +13,7 @@ export type ColumnProps = {
   searchable?: boolean;
 };
 
-export interface RowProps {
+interface RowProps {
   data: any[];
   columns: ColumnProps[];
   // children?: JSX.Element;

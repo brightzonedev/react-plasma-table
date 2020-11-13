@@ -4,12 +4,12 @@ import { useSort } from "../hooks/useSort";
 import { useSearch } from "../hooks/useSearch";
 import RenderCustomComponents from "../RenderCustomComponents";
 
-type Row = {
+export type Row = {
   [key: string]: any;
   subRows?: any[];
 };
 
-type ColumnProps = {
+export type ColumnProps = {
   id: number | string;
   name: string | number;
   dataKey: string | number;
