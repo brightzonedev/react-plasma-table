@@ -7,7 +7,10 @@ export const useSearch = (rows: any, searchQuery = "", searchColumns: any) => {
     const filtered = rows?.filter((row: any) =>
       searchColumns?.some(
         (column) =>
-          row[column]?.toLowerCase().indexOf(searchQuery?.toLowerCase()) > -1
+          row[column]
+            ?.toString()
+            ?.toLowerCase()
+            .indexOf(searchQuery?.toLowerCase()) > -1
       )
     );
     setfilteredData(filtered);
