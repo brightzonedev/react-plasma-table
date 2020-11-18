@@ -101,7 +101,7 @@ export const Table: React.FC<TableProps> = ({
       </thead>
       <tbody className="plasma-body">
         {sortedData?.map((row: RowTypes, index) => (
-          <Fragment key={row}>
+          <Fragment key={index}>
             <tr
               className={
                 expandedRows?.find((i: RowTypes) => i === row)
