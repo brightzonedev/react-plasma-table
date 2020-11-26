@@ -7,7 +7,7 @@
 ### React plasma table
 
 - ✅ Super simple and intuitive API
-- ✅ Semantically opinionated rendered tables vs modern customizeable tables - the choice is yours
+- ✅ Semantically opinionated rendered tables
 - ✅ Perfect for small and large projects
 - ✅ Written in Typescript
 - ✅ Sortable out of the box

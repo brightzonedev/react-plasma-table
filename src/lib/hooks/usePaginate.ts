@@ -21,7 +21,7 @@ export const usePaginate = (data: any, perPage: number) => {
   useEffect(() => {
     const begin = (currentPage - 1) * perPage;
     const end = begin + perPage;
-    setCurrentData(data.slice(begin, end));
+    setCurrentData(data?.slice(begin, end));
   }, [currentPage, perPage, data]);
 
   return { goNext, goPrev, goToPage, currentData, currentPage, lastPage };
