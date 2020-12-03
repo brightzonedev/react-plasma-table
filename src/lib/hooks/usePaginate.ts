@@ -6,11 +6,11 @@ export const usePaginate = (data: any, perPage: number) => {
   const lastPage = Math.ceil(data?.length / perPage);
 
   const goNext = (): void => {
-    setCurrentPage((currentPage) => Math.min(currentPage + 1, lastPage));
+    setCurrentPage((prevPage) => Math.min(prevPage + 1, lastPage));
   };
 
   const goPrev = (): void => {
-    setCurrentPage((currentPage) => Math.max(currentPage - 1, 1));
+    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
   const goToPage = (page: number) => {
