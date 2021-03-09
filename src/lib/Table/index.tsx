@@ -14,6 +14,7 @@ export type ColumnProps = {
   name: string | number;
   dataKey: string | number;
   component?: (props: any) => JSX.Element;
+  columnComponent?: (props: any) => JSX.Element;
   sortable?: boolean;
   searchable?: boolean;
   subRowComponent?: (props: any) => JSX.Element;
@@ -74,14 +75,15 @@ export const Table: React.FC<TableProps> = ({
     <table className="plasma-table" cellPadding={0} cellSpacing={0}>
       <thead className="plasma-thead">
         <tr className="plasma-header-tr">
-          {columns?.map(({ id, name, dataKey, sortable }) => (
+          {columns?.map(({ id, name, dataKey, sortable, columnComponent }) => (
             <th className="plasma-th" key={id}>
               <button
                 className="plasma-sort-btn"
                 type="button"
                 onClick={() => onSort(dataKey, sortable)}
               >
-                {name}
+                {columnComponent && RenderCustomComponents(columnComponent)}
+                {!columnComponent && name}
                 <span className="plasma-sort-icon">
                   {sortDownIcon &&
                     sortConfig?.direction === "ascending" &&
