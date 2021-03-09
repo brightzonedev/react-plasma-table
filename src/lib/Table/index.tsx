@@ -82,8 +82,8 @@ export const Table: React.FC<TableProps> = ({
                 type="button"
                 onClick={() => onSort(dataKey, sortable)}
               >
-                {columnComponent && RenderCustomComponents(columnComponent)}
-                {!columnComponent && name}
+                {columnComponent && `${name} ${RenderCustomComponents(columnComponent)}`}
+                {/* {!columnComponent && name} */}
                 <span className="plasma-sort-icon">
                   {sortDownIcon &&
                     sortConfig?.direction === "ascending" &&
