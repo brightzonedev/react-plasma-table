@@ -82,9 +82,10 @@ export const Table: React.FC<TableProps> = ({
                 type="button"
                 onClick={() => onSort(dataKey, sortable)}
               >
-                {/* {columnComponent && `${name} ${RenderCustomComponents(columnComponent)}`} */}
-                {/* {!columnComponent && name} */}
-                {/* <span className="plasma-sort-icon">
+                {columnComponent &&
+                  `${name} ${RenderCustomComponents(columnComponent)}`}
+                {!columnComponent && name}
+                <span className="plasma-sort-icon">
                   {sortDownIcon &&
                     sortConfig?.direction === "ascending" &&
                     sortConfig?.key === dataKey &&
@@ -95,7 +96,7 @@ export const Table: React.FC<TableProps> = ({
                     sortConfig?.direction === "descending" &&
                     sortConfig?.key === dataKey &&
                     RenderCustomComponents(sortUpIcon)}
-                </span> */}
+                </span>
               </button>
             </th>
           ))}
