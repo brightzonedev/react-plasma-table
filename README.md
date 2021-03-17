@@ -13,7 +13,7 @@
 - ✅ Sortable out of the box
 - ✅ Searchable (✨ New! ✨)
 - ✅ Now with pagination (✨ New! ✨)
-- ✅ Collapsable (✨ New! - In development ✨)
+- ✅ Collapsable (✨ New! ✨)
 
 ```
 yarn add react-plasma-table
