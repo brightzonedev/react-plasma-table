@@ -1,6 +1,6 @@
 {
   "name": "react-plasma-table",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "React Plasma Table",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
